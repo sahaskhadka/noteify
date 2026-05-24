@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Logo } from './components/Logo';
 import { 
   Plus, Search, Moon, Sun, Edit2, Trash2, Save, X, Clock,
   TrendingUp, FolderOpen, ArrowRight, LayoutGrid, List, Type,
@@ -33,7 +34,7 @@ function App() {
   const [showReminderModal, setShowReminderModal] = useState(false);
   const [selectedNoteForReminder, setSelectedNoteForReminder] = useState<Note | null>(null);
 
-  useEffect(() => { document.title = 'Noteify'; }, []);
+  useEffect(() => { document.title = 'Noteifyi'; }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -145,17 +146,12 @@ function App() {
       <header className="sticky top-0 z-20 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-100 dark:to-gray-200 rounded-lg flex items-center justify-center shadow-md">
-                <Type className="w-4 h-4 text-white dark:text-gray-900" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent tracking-tight">
-                  Noteify
-                </h1>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
-              </div>
+          <div className="flex items-center space-x-3">
+            <img src="/logo.png" alt="Noteify" className="w-16 h-16 rounded-lg object-cover" />
+            <div>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
             </div>
+          </div>
             <div className="flex items-center gap-3">
               <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl">
                 <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded-lg transition-all duration-200 ${
